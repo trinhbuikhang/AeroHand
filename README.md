@@ -1,187 +1,199 @@
-# AeroHand - Gesture Mouse Control
+# 🚀 AeroHand - Gesture Mouse Control
 
-## Giới thiệu
+**AeroHand** là một ứng dụng điều khiển chuột bằng cử chỉ tay sử dụng computer vision và machine learning. Ứng dụng cho phép bạn điều khiển con trỏ chuột và thực hiện các thao tác click chỉ bằng cách sử dụng cử chỉ tay trước webcam.
 
-AeroHand là một ứng dụng desktop nhẹ được viết bằng Python, cho phép điều khiển chuột máy tính bằng cử chỉ tay thông qua webcam. Ứng dụng sử dụng AI để nhận diện bàn tay và theo dõi chuyển động để thực hiện các thao tác chuột.
+![AeroHand Demo](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)
 
-## Tính năng
+## ✨ Tính năng chính
 
-- 🖱️ **Di chuyển chuột**: Sử dụng ngón trỏ để điều khiển con trỏ chuột
-- 👆 **Click trái**: Chạm đầu ngón trỏ và ngón cái vào nhau
-- ✊ **Click phải**: Nắm tay (co tất cả ngón tay)
-- 📹 **Hiển thị trực tiếp**: Giao diện hiển thị webcam với overlay nhận diện tay
-- 📊 **Trạng thái realtime**: Hiển thị trạng thái hiện tại (Moving/Left Click/Right Click)
-- 🌐 **Network Camera**: Hỗ trợ sử dụng camera từ máy tính khác qua mạng
+- 🖱️ **Điều khiển con trỏ chuột** bằng ngón trỏ
+- 👆 **Left Click** bằng cử chỉ nhíp (ngón trỏ + ngón cái)
+- ✊ **Right Click** bằng cử chỉ nắm tay
+- 🎥 **Hỗ trợ camera local và network camera**
+- 🔧 **Tùy chỉnh độ nhạy và kích thước hiển thị**
+- 🐛 **Debug mode** để theo dõi việc nhận diện
+- 📱 **GUI thân thiện** với thông tin real-time
 
-## Yêu cầu hệ thống
+## 🎮 Cách sử dụng
 
+### Cử chỉ điều khiển:
+- **Di chuyển chuột**: Giơ ngón trỏ và di chuyển tay
+- **Left Click**: Chạm ngón trỏ với ngón cái (cử chỉ nhíp)
+- **Right Click**: Nắm tay thành nắm đấm
+
+### Phím tắt:
+- `q` hoặc `ESC`: Thoát ứng dụng
+- `r`: Reset ứng dụng
+- `h`: Hiển thị trợ giúp
+
+## 🛠️ Cài đặt
+
+### Yêu cầu hệ thống:
 - Python 3.8 trở lên
-- Webcam hoạt động
-- Windows/macOS/Linux
+- Webcam hoặc camera USB
+- Hỗ trợ Windows, Linux, macOS
 
-## Cài đặt
+### Cài đặt từ source:
 
-1. **Clone hoặc tải project**:
-   ```bash
-   git clone <repository-url>
-   cd AeroHand
-   ```
+```bash
+# Clone repository
+git clone https://github.com/yourusername/AeroHand.git
+cd AeroHand
 
-2. **Tạo môi trường ảo (khuyến nghị)**:
-   ```bash
-   python -m venv venv
-   
-   # Windows
-   venv\Scripts\activate
-   
-   # macOS/Linux
-   source venv/bin/activate
-   ```
+# Cài đặt dependencies
+pip install -r requirements.txt
 
-3. **Cài đặt dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+# Chạy ứng dụng
+python main.py
+```
 
-## Chạy ứng dụng
+### Cài đặt nhanh (Windows):
+```bash
+# Chạy script cài đặt
+install.bat
 
-### Sử dụng camera local (mặc định)
+# Hoặc chạy trực tiếp
+run_aerohand.bat
+```
+
+## 🚀 Sử dụng
+
+### Chạy cơ bản:
 ```bash
 python main.py
 ```
 
-### Sử dụng camera qua mạng
+### Tùy chọn nâng cao:
 ```bash
-# Trên máy có camera (ví dụ: 192.168.14.123)
-python camera_server.py
+# Sử dụng network camera
+python main.py --camera-ip 192.168.1.100
 
-# Trên máy chạy AeroHand 
-python main.py --camera-ip 192.168.14.123
-```
+# Thu nhỏ cửa sổ hiển thị
+python main.py --display-scale 0.5
 
-### Các tùy chọn khác
-```bash
-# Scan mạng tìm camera servers
-python network_scanner.py
-
-# Chạy demo mode (không điều khiển chuột)
+# Chế độ demo
 python main.py --demo
 
-# Chạy GUI launcher
-python launcher.py
+# Quét network để tìm camera
+python main.py --scan-network
 ```
 
-## Cách sử dụng
+## ⚙️ Cấu hình
 
-1. **Khởi động ứng dụng**: Chạy `python main.py`
-2. **Cho phép quyền truy cập webcam**: Khi được yêu cầu
-3. **Đưa tay vào khung hình**: Ứng dụng sẽ tự động nhận diện
-4. **Điều khiển chuột**:
-   - Đưa ngón trỏ để di chuyển con trỏ
-   - Chạm ngón trỏ và ngón cái để click trái
-   - Nắm tay để click phải
-5. **Thoát**: Nhấn 'q' hoặc đóng cửa sổ
+Tùy chỉnh các thông số trong `config/settings.py`:
 
-## Sử dụng với Network Camera
+```python
+# Độ phân giải camera
+CAMERA_WIDTH = 640
+CAMERA_HEIGHT = 480
 
-### Tình huống: Máy không có camera muốn sử dụng camera từ máy khác
+# Độ nhạy gesture
+CLICK_THRESHOLD = 0.08
+SMOOTHING_FACTOR = 0.7
 
-1. **Trên máy có camera (Server)**:
-   ```bash
-   # Tải AeroHand project
-   git clone <repository-url>
-   cd AeroHand
-   
-   # Cài đặt dependencies
-   pip install opencv-python
-   
-   # Chạy camera server
-   python camera_server.py
-   
-   # Ghi nhớ IP address được hiển thị (ví dụ: 192.168.14.123)
-   ```
-
-2. **Trên máy chạy AeroHand (Client)**:
-   ```bash
-   # Scan mạng tìm camera
-   python network_scanner.py
-   
-   # Hoặc test IP cụ thể
-   python network_scanner.py --ip 192.168.14.123
-   
-   # Chạy AeroHand với network camera
-   python main.py --camera-ip 192.168.14.123
-   ```
-
-3. **Hoặc sử dụng GUI**:
-   ```bash
-   python launcher.py
-   # → Chọn "Network Camera"
-   # → Nhập IP: 192.168.14.123
-   # → Click "Launch AeroHand"
-   ```
-
-### Hướng dẫn nhanh cho network setup:
-```bash
-# Chạy network setup guide
-python network_setup.py
+# Debug mode
+DEBUG_MODE = True
+SHOW_DEBUG_INFO = True
 ```
 
-## Cấu trúc dự án
+## 📁 Cấu trúc dự án
 
 ```
 AeroHand/
-├── main.py                 # File chính để chạy ứng dụng
-├── modules/
-│   ├── __init__.py
-│   ├── hand_tracking.py    # Module nhận diện và theo dõi tay
-│   └── camera_manager.py   # Quản lý webcam
-├── utils/
-│   ├── __init__.py
-│   ├── gesture.py          # Xử lý các cử chỉ
-│   └── mouse_control.py    # Điều khiển chuột
+├── main.py                 # File chính của ứng dụng
+├── requirements.txt        # Dependencies Python
 ├── config/
-│   ├── __init__.py
-│   └── settings.py         # Cấu hình ứng dụng
-├── requirements.txt        # Dependencies
-└── README.md              # Tài liệu này
+│   └── settings.py        # Cấu hình ứng dụng
+├── modules/
+│   ├── camera_manager.py  # Quản lý camera
+│   ├── hand_tracking.py   # Nhận diện bàn tay
+│   └── network_camera.py  # Camera qua mạng
+├── utils/
+│   ├── gesture.py         # Nhận diện cử chỉ
+│   ├── mouse_control.py   # Điều khiển chuột
+│   └── system_check.py    # Kiểm tra hệ thống
+├── demo.py                # Chế độ demo
+├── launcher.py            # GUI launcher
+└── docs/                  # Tài liệu
 ```
 
-## Cấu hình
+## 🔧 Các công cụ hỗ trợ
 
-Có thể tùy chỉnh các thông số trong `config/settings.py`:
+- `demo.py`: Chạy chế độ demo
+- `setup.py`: Cài đặt và cấu hình
+- `network_scanner.py`: Quét camera trên mạng
+- `camera_troubleshoot.py`: Khắc phục sự cố camera
+- `test_components.py`: Test các thành phần
 
-- `CAMERA_WIDTH`, `CAMERA_HEIGHT`: Độ phân giải webcam
-- `DETECTION_CONFIDENCE`: Độ tin cậy nhận diện tay
-- `TRACKING_CONFIDENCE`: Độ tin cậy theo dõi tay
-- `SMOOTHING_FACTOR`: Độ mượt của chuyển động chuột
-- `CLICK_THRESHOLD`: Ngưỡng khoảng cách để kích hoạt click
+## 🐛 Debug và Troubleshooting
 
-## Xử lý sự cố
+### Bật debug mode:
+```python
+# Trong config/settings.py
+DEBUG_MODE = True
+SHOW_DEBUG_INFO = True
+```
 
-### Webcam không hoạt động
-- Kiểm tra webcam có được kết nối và hoạt động
-- Đảm bảo không có ứng dụng khác đang sử dụng webcam
-- Thử thay đổi `CAMERA_INDEX` trong settings
+### Các vấn đề thường gặp:
 
-### Nhận diện tay không chính xác
-- Đảm bảo ánh sáng đủ
-- Giữ tay trong khung hình webcam
-- Tăng `DETECTION_CONFIDENCE` nếu cần
+1. **Camera không hoạt động**:
+   ```bash
+   python utils/system_check.py
+   ```
 
-### Chuột di chuyển giật lag
-- Giảm `SMOOTHING_FACTOR`
-- Kiểm tra hiệu năng CPU
-- Giảm độ phân giải webcam nếu cần
+2. **Chuột nháy nháy**:
+   - Tăng SMOOTHING_FACTOR trong settings
+   - Kiểm tra ánh sáng
 
-## Đóng góp
+3. **Không nhận diện gesture**:
+   - Kiểm tra CLICK_THRESHOLD
+   - Đảm bảo tay trong khung hình
 
-Mọi đóng góp đều được chào đón! Hãy tạo issue hoặc pull request.
+## 🤝 Đóng góp
 
-## Giấy phép
+Chúng tôi hoan nghênh mọi đóng góp! Vui lòng:
 
-MIT License - Xem file LICENSE để biết thêm chi tiết.
+1. Fork repository
+2. Tạo feature branch: `git checkout -b feature-name`
+3. Commit changes: `git commit -am 'Add feature'`
+4. Push branch: `git push origin feature-name`
+5. Tạo Pull Request
 
-## Tác giả
+## 📄 License
 
-Created with ❤️ using Python, OpenCV, MediaPipe, and PyAutoGUI.
+Dự án này được cấp phép theo [MIT License](LICENSE).
+
+## 🙏 Credits
+
+- **MediaPipe** - Hand tracking
+- **OpenCV** - Computer vision
+- **PyAutoGUI** - Mouse control
+- **NumPy** - Numerical computing
+
+## 📞 Liên hệ
+
+- **Author**: AeroHand Team
+- **Email**: your.email@example.com
+- **GitHub**: https://github.com/yourusername/AeroHand
+
+## 🔄 Lịch sử phiên bản
+
+### v1.0.0 (Current)
+- ✅ Điều khiển chuột cơ bản
+- ✅ Nhận diện gesture pinch và fist
+- ✅ Hỗ trợ network camera
+- ✅ Debug mode
+- ✅ GUI thân thiện
+
+### Roadmap
+- [ ] Double click gesture
+- [ ] Scroll gesture
+- [ ] Multi-hand support
+- [ ] Mobile app
+- [ ] Voice commands integration
+
+---
+
+⭐ Nếu bạn thấy dự án hữu ích, hãy cho chúng tôi một star trên GitHub!
